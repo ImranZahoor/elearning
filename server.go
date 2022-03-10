@@ -24,8 +24,17 @@ func main() {
 	g.GET("/", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{"intro": "e-learning api"})
 	})
-	g.GET("/module", controllers.GetAll)
-	g.GET("/module/:id", controllers.Find)
+	module := g.Group("/module")
+	{
+		module.GET("/", controllers.GetAll)
+		module.GET("/:id", controllers.Find)
+	}
+
+	subject := g.Group("/subject")
+	{
+		subject.GET("/", controllers.GetAll)
+		subject.GET("/:id", controllers.Find)
+	}
 
 	g.Run("0.0.0.0:9090")
 }
