@@ -20,6 +20,15 @@ func GetAll(c *gin.Context) {
 	}
 }
 
+func Create(c *gin.Context) {
+	// db := c.MustGet("db").(*gorm.DB)
+	var module models.Module
+	c.BindJSON(&module)
+	// db.Create(&module)
+	c.JSON(http.StatusOK, gin.H{"data": module})
+
+}
+
 func Find(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	var module models.Module

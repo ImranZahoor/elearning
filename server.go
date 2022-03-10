@@ -26,6 +26,7 @@ func main() {
 	})
 	g.GET("/module", controllers.GetAll)
 	g.GET("/module/:id", controllers.Find)
+	g.POST("/module", controllers.Create)
 
 	g.Run("0.0.0.0:9090")
 }
