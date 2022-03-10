@@ -1,7 +1,8 @@
 package main
 
 import (
-	"elearning/controllers"
+	modules "elearning/controllers/modules"
+	subjects "elearning/controllers/subjects"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -26,14 +27,14 @@ func main() {
 	})
 	module := g.Group("/module")
 	{
-		module.GET("/", controllers.GetAll)
-		module.GET("/:id", controllers.Find)
+		module.GET("/", modules.GetAll)
+		module.GET("/:id", modules.Find)
 	}
 
 	subject := g.Group("/subject")
 	{
-		subject.GET("/", controllers.GetAll)
-		subject.GET("/:id", controllers.Find)
+		subject.GET("/", subjects.GetAll)
+		subject.GET("/:id", subjects.Find)
 	}
 
 	g.Run("0.0.0.0:9090")
